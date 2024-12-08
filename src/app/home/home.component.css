@@ -1,0 +1,37 @@
+.top-class {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    .side-nav {
+        height: 100%;
+        width: 40%;
+        max-width: 250px !important;
+        display: flex;
+    }
+    .rest-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .header {
+            height: 56px;
+            width: 100%;
+            background-color: pink;
+        }
+        .content {
+            display: flex;
+            height: calc(100vh - 56px - 40px);
+            background-color: blue;
+            width: 100%;
+            flex: 1 1 0;
+            overflow: auto;
+        }
+        .footer {
+            height:40px;
+            display: flex;
+            background-color:brown;
+        }
+    }
+}

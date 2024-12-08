@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    font: 400 14px / 20px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal;
+    margin: 0;
+    padding: 0;
+}

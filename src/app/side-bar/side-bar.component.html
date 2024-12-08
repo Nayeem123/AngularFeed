@@ -1,0 +1,10 @@
+<div class="side-bar-main">
+    <div class="top-section">
+        Bits Pilani
+    </div>
+    <div class="sections">
+        <div class="section" *ngFor="let tab of userTabs;let index = index;">
+            <div class="tab" (click)="navigateToTab(tab)">{{tab.title}}</div>
+        </div>
+    </div>
+</div>

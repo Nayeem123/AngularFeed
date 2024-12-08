@@ -1,0 +1,32 @@
+.side-bar-main {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: 30px;
+    padding: 8px;
+    width: 250px;
+    box-sizing: border-box;
+
+    .top-section {
+        font-size: 24px;
+        color: #0725ce;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-weight: 700;                       
+    }
+    .sections {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .section {
+            padding: 5px;
+            border: 1px solid black;
+            .tab {
+                font-weight: bold;
+                font-size: 16px;
+                color: #0725ce;
+            }
+        }
+    }
+}
