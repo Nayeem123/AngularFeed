@@ -21,20 +21,20 @@ export class SideBarComponent implements OnInit{
     this.userTabs = userRole === 'admin' ? [
       {
         title: 'User Management',
-        path:'/manage-user'
+        path:'/home/manage-user'
       },
       {
         title: 'Profile',
-        path:'/profile'
+        path:'/home/profile'
       }
     ] : [
       {
         title: 'Feedback',
-        path:'/feedback'
+        path:'/home/feedback'
       },
       {
         title: 'Profile',
-        path:'/profile'
+        path:'/home/profile'
       }
     ]
   }
