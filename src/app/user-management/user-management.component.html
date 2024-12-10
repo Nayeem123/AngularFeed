@@ -1,1 +1,41 @@
-<p>user-management works!</p>
+<div class="user-management">
+    <div class="add-user" (click)="addUser()">
+        <div class="add-button">Add User</div>
+    </div>
+    <div class="users-list" *ngIf="usersList && usersList.length > 0">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.fullname}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="role">
+              <th mat-header-cell *matHeaderCellDef> Roles </th>
+              <td mat-cell *matCellDef="let element"> {{fetchRoles(element.roles)}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="username">
+              <th mat-header-cell *matHeaderCellDef> Username </th>
+              <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let element">
+                <div matRipple (click)="deleteUser(element)" [matRippleColor]="'#0725ce42'">
+                    <img src="assets/delete.png" class="delete-icon" alt="delete User" width="20" height="20"/>
+                </div>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>        
+    </div>
+    <div class="no-data" *ngIf="usersList && usersList.length == 0">
+        No Data Found!
+    </div>
+    <div class="pagination">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

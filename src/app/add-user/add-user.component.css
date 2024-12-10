@@ -1,0 +1,59 @@
+.add-user-form {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    .title {
+        display: flex;
+        font-size: 20px;
+        font-weight: bold;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .each-field {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            .field {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                .label-cls {
+                    font-weight: bold;
+                    width: 35%;
+                }
+            }
+        }
+    }
+    .action-btns {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .close {
+            display: flex;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px 25px;
+            color:black;
+            border: 1px solid black;
+            background: white;
+            border-radius: 30px;
+            align-items: center;
+        }
+        .submit {
+            display: flex;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px 25px;
+            color:white;
+            border: 1px solid white;
+            background: black;
+            border-radius: 30px;
+            align-items: center;
+        }
+    }
+}

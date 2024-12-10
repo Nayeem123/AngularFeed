@@ -38,7 +38,6 @@
             }
         }
         .content {
-            display: flex;
             height: calc(100vh - 56px - 40px);
             width: 100%;
             flex: 1 1 0;

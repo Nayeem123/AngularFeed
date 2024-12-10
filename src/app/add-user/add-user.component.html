@@ -1,0 +1,43 @@
+<div class="add-user-form">
+    <div class="title">Add User</div>
+    <form [formGroup]="form">
+        <div class="each-field">
+           <div class="field">
+            <label for="fullname" class="label-cls">Full Name:</label>
+            <input id="fullname" formControlName="fullname" type="text" />
+           </div> 
+        </div>
+      
+        <div class="each-field">
+            <div class="field">
+                <label for="username" class="label-cls">Username:</label>
+                <input id="username" formControlName="username" type="email" />
+            </div>
+        </div>
+      
+        <div class="each-field">
+            <div class="field">
+                <label for="password" class="label-cls">Password:</label>
+                <input id="password" formControlName="password" type="password" />
+            </div>
+        </div>
+
+        <div class="each-field">
+            <div class="field">
+                <label class="label-cls">Role:</label>
+                <label>
+                  <input type="radio" formControlName="role" value="user" /> User
+                </label>
+                <label>
+                  <input type="radio" formControlName="role" value="admin" /> Admin
+                </label>
+            </div>
+        </div>
+      
+        <div class="action-btns">
+            <button type="button" class="close" (click)="onClose()">Close</button>
+            <button type="button" class="submit" (click)="onSubmit()">Submit</button>
+        </div>
+      </form>
+      
+</div>

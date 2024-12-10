@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -11,14 +11,17 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class SideBarComponent implements OnInit{
-  constructor(private router:Router) {
+  constructor(private router:Router,@Inject(PLATFORM_ID) private platformId: Object) {
 
   }
   userTabs:any = [];
 
   ngOnInit(): void {
-    let userRole = 'admin';
-    this.userTabs = userRole === 'admin' ? [
+    let isAdmin;
+    if (isPlatformBrowser(this.platformId)) {
+     isAdmin = localStorage['isAdmin'] || false;
+    }
+    this.userTabs = (isAdmin) ? [
       {
         title: 'User Management',
         path:'/home/manage-user'

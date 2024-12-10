@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class FeedbackService {
 
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) {}
 
@@ -29,7 +29,15 @@ export class FeedbackService {
   }
 
   loginUser(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, data);
+    return this.http.post(`${this.baseUrl}/api/login`, data);
+  }
+
+  fetchUsers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/user/fetch`);
+  }
+
+  createUser(data:any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/user/create`, data);
   }
 
 }
