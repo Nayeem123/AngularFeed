@@ -20,7 +20,7 @@ export class AddUserComponent {
       fullname: ['', [Validators.required]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      role: ['user', Validators.required]
+      role: ['ROLE_USER', Validators.required]
     });
   }
 
@@ -45,7 +45,7 @@ export class AddUserComponent {
       fullname: this.form.get('fullname')?.value,
       username: this.form.get('username')?.value,
       password: this.form.get('password')?.value,
-      role: this.form.get('role')?.value
+      roles: [this.form.get('role')?.value]
     }
     this.feedbackService.createUser(body).subscribe((data)=>{
       this.toasterService.success(data.message);
