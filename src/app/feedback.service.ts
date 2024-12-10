@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class FeedbackService {
 
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
 

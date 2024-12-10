@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { FeedbackService } from '../../feedback.service';
 import { error } from 'console';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
   userName: string = '';
   password: string = '';
-  constructor(private feedbackService : FeedbackService, private toasterService : ToastrService){
+  constructor(private feedbackService : FeedbackService, private toasterService : ToastrService,private router: Router){
     
   }
   ngOnInit(): void {
@@ -32,7 +33,16 @@ export class LoginComponent implements OnInit {
     this.feedbackService.loginUser(submitData).subscribe(
       (response)=>{
         if(response && response.user && (response.user.isAdmin || (response.user.roles && response.user.roles.includes('ROLE_ADMIN')))) {
-          localStorage['isAdmin']= response.user.isAdmin;
+          localStorage['isAdmin']= true;
+        }
+        else {
+          localStorage['isAdmin']= false;
+        }
+        if(response.user.isAdmin) {
+          this.router.navigate(['/home/manage-user']);
+        }
+        else {
+          this.router.navigate(['/home/feedback']);
         }
     },(err)=>{
       this.toasterService.error("Login Failed!");
