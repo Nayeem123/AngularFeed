@@ -26,70 +26,7 @@ export class UserManagementComponent  implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    // this.getUsersList();
-    this.usersList = [{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    },{
-      username:'Hello123',
-      fullname:'onetwothree',
-      roles:["ROLE_USER","ROLE_ADMIN"],
-      password:null
-    }];
-    this.dataSource = new MatTableDataSource(this.usersList);
-    this.dataSource.paginator = this.paginator;
+    this.getUsersList();
   }
 
   addUser() {
@@ -130,7 +67,7 @@ export class UserManagementComponent  implements OnInit{
 
   fetchRoles(roles:[]) {
     const mapRoles :{[key:string]:string} ={
-      ROLE_ADMIN:'Administartor',
+      ROLE_ADMIN:'Administrator',
       ROLE_USER:'User'
     }
     return roles.map(role => mapRoles[role] || role).join(' , ');
