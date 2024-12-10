@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
     }
     this.feedbackService.loginUser(submitData).subscribe(
       (response)=>{
-        if(response && response.user && (response.user.isAdmin || (response.user.roles && response.user.roles.includes('ROLE_ADMIN')))) {
+        if(response && response.user && (response.user.roles && response.user.roles.includes('ROLE_ADMIN'))) {
           localStorage['isAdmin']= true;
         }
         else {
           localStorage['isAdmin']= false;
         }
-        if(response.user.isAdmin) {
+        if((response.user.roles && response.user.roles.includes('ROLE_ADMIN'))) {
           this.router.navigate(['/home/manage-user']);
         }
         else {
