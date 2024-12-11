@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SideBarComponent } from '../side-bar/side-bar.component';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +9,12 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private router:Router){
+    
+  }
 
   onLogout() {
-    console.log("logout clicked")
+    localStorage.removeItem('isAdmin');
+    this.router.navigate(['/login']);
   }
 }

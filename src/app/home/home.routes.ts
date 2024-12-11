@@ -15,6 +15,13 @@ export const homeRoutes: Routes = [
           ),
       },
       {
+        path: 'feedback',
+        loadChildren: () =>
+          import('../feedback/feedback.routes').then(
+            (m) => m.feedbackRoutes
+          ),
+      },
+      {
         path:'profile',
         loadChildren: () =>
           import('../profile/profile.routes').then(

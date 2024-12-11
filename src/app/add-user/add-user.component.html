@@ -1,5 +1,5 @@
 <div class="add-user-form">
-    <div class="title">Add User</div>
+    <div class="title">{{ isEditMode ? 'Edit User' : 'Add User' }}</div>
     <form [formGroup]="form">
         <div class="each-field">
            <div class="field">
@@ -36,7 +36,8 @@
       
         <div class="action-btns">
             <button type="button" class="close" (click)="onClose()">Close</button>
-            <button type="button" class="submit" (click)="onSubmit()">Submit</button>
+            <button type="button" class="submit" (click)="onSubmit()" *ngIf="!isEditMode">Add</button>
+            <button type="button" class="submit" (click)="onEdit()" *ngIf="isEditMode">Update</button>
         </div>
       </form>
       

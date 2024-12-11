@@ -34,6 +34,28 @@ export class UserManagementComponent  implements OnInit{
       width: '400px',
       height : 'auto',
       maxWidth:'400px',
+      data:{
+        mode:'add'
+      },
+      panelClass :'panel-cls'
+    });
+
+    dialog.afterClosed().subscribe((result:any) => {
+      if(result) {
+        this.getUsersList();
+      }
+    })
+  }
+
+  editUser(record:any) {
+    const dialog = this.dialog.open(AddUserComponent,{
+      width: '400px',
+      height : 'auto',
+      maxWidth:'400px',
+      data:{
+        mode:'edit',
+        userData:record
+      },
       panelClass :'panel-cls'
     });
 
@@ -45,7 +67,12 @@ export class UserManagementComponent  implements OnInit{
   }
 
   deleteUser(user:any) {
-
+    this.feedbackService.deleteUser(user.id).subscribe((data)=>{
+      this.toaster.success("User Deleted successfully");
+      this.getUsersList();
+    },(error)=>{
+      this.toaster.error("Error in Deleting User");
+    });
   }
 
   getUsersList() {
@@ -56,7 +83,7 @@ export class UserManagementComponent  implements OnInit{
       this.dataSource.paginator = this.paginator;
       this.requestInProgress = false;
     },(error)=>{
-      this.toaster.error("Eror Fetching User List!");
+      this.toaster.error("Error Fetching User List!");
       this.requestInProgress = false;
     })
   }
