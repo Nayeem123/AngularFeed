@@ -19,7 +19,7 @@ export class SideBarComponent implements OnInit{
   ngOnInit(): void {
     let isAdmin;
     if (isPlatformBrowser(this.platformId)) {
-     isAdmin = localStorage['isAdmin'] || false;
+     isAdmin = JSON.parse(localStorage['isAdmin']) || false;
     }
     this.userTabs = (isAdmin) ? [
       {

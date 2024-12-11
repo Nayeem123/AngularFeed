@@ -41,11 +41,11 @@ export class FeedbackService {
   }
 
   deleteUser(id: any): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/user/delete?id=${id}`);
+    return this.http.post(`${this.baseUrl}/user/delete?id=${id}`,{});
   }
 
   updateUser(data:any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/user/edit`, data);
+    return this.http.post(`${this.baseUrl}/user/update`, data);
   }
 
 }
