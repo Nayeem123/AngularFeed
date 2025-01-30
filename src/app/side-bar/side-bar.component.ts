@@ -27,6 +27,10 @@ export class SideBarComponent implements OnInit{
         path:'/home/manage-user'
       },
       {
+        title: 'Feedback',
+        path:'/home/feedback'
+      },
+      {
         title: 'Profile',
         path:'/home/profile'
       }
