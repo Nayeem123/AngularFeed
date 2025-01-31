@@ -1,0 +1,20 @@
+<div class="containers w-50 m-auto">
+    <div class="d-flex flex-row justify-content-center my-4">
+      <h4>Add Feedback Categories</h4>
+    </div>
+  
+    <div class="mb-3">
+      <label for="feedbackCategory" class="form-label">Feedback Category</label>
+      <input type="text" [(ngModel)]="feedbackCategory" class="form-control" id="feedbackCategory" placeholder="">
+    </div>
+  
+    <div class="mb-3">
+      <label for="feedbackSubCategory" class="form-label">Feedback Sub Category</label>
+      <input type="text" [(ngModel)]="feedbackSubCategory" class="form-control" id="feedbackSubCategory" placeholder="">
+    </div>
+  
+    <div class="d-flex justify-content-center my-4">
+      <button (click)="createCategory()" class="btn btn-primary">Create</button>
+    </div>
+  </div>
+  
