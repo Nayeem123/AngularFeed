@@ -1,0 +1,50 @@
+<div class="feedback-details-container">
+    <!-- Summary Section -->
+    <div class="summary-section">
+      <button class="summary-btn" (click)="redirectToDetails('Open')">
+        Open-{{ openCount }}
+      </button>
+      <button class="summary-btn" (click)="redirectToDetails('Resolved')">
+        Resolved-{{ resolvedCount }}
+      </button>
+    </div>
+  
+    <!-- Priority Section -->
+    <div class="priority-section">
+      <span class="priority-badge urgent">Urgent {{ urgentCount }}</span>
+      <span class="priority-badge medium">Medium {{ mediumCount }}</span>
+      <span class="priority-badge low">Low {{ lowCount }}</span>
+    </div>
+  
+    <!-- Table Section -->
+    <div class="table-section">
+      <table>
+        <thead>
+          <tr>
+            <th>SNo</th>
+            <th>Username</th>
+            <th>Priority</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let feedback of feedbackDetails; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ feedback.anonymous ? getMaskedUsername(feedback.username) : feedback.username }}</td>
+            <td>{{ feedback.priority }}</td>
+            <td>
+              <span
+                *ngIf="feedback.status.toUpperCase() === 'OPEN'; else normalStatus"
+                class="clickable-status"
+                (click)="handleStatusClick(feedback)"
+              >
+                {{ feedback.status }}
+              </span>
+              <ng-template #normalStatus>{{ feedback.status }}</ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
