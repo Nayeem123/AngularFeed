@@ -1,0 +1,98 @@
+.feedback-details-container {
+    background-color: #ccf5cc;
+    /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Summary Section */
+.summary-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.summary-btn {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.summary-btn:hover {
+    background-color: #444;
+}
+
+/* Priority Section */
+.priority-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.priority-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.priority-badge.urgent {
+    background-color: red;
+}
+
+.priority-badge.medium {
+    background-color: orange;
+}
+
+.priority-badge.low {
+    background-color: purple;
+}
+
+/* Table Section */
+.table-section {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f7c781;
+    /* Light orange header */
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+/* Styling for clickable status */
+.clickable-status {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.clickable-status:hover {
+    color: darkblue;
+}

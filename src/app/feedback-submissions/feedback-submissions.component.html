@@ -1,0 +1,49 @@
+<div class="feedback-submissions-container">
+    <!-- User Details -->
+    <div class="user-details">
+      <p><strong>Username:</strong> {{ getMaskedUsername(username) }}</p>
+      <p *ngIf="fullName != null"><strong>Full Name:</strong> {{ fullName }}</p>
+    </div>
+  
+    <!-- Feedback Section -->
+    <div class="feedback-section">
+      <div *ngFor="let feedback of feedbackData; let i = index" class="feedback-item">
+        <p><strong>Q{{ i + 1 }}. {{ feedback.question }}</strong></p>
+        <p><strong>Submitted Answer:</strong> {{ feedback.answer }}</p>
+      </div>
+    </div>
+  
+    <!-- Comments Section -->
+    <div class="comments-section">
+      <p><strong>Comments</strong></p>
+      <textarea
+        [(ngModel)]="comments"
+        placeholder="Add your comments here"
+        rows="3"
+      ></textarea>
+    </div>
+  
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button
+        class="action-button in-progress"
+        [class.selected]="selectedStatus === 'INPROGRESS'"
+        (click)="submitFeedback('INPROGRESS')"
+      >
+        In Progress
+      </button>
+      <button
+        class="action-button resolve"
+        (click)="submitFeedback('RESOLVED')"
+      >
+        Resolve
+      </button>
+      <button
+        class="action-button cancel"
+        (click)="cancelBtn()"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+  

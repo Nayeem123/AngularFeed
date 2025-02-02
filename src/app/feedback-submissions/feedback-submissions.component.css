@@ -1,0 +1,63 @@
+.feedback-submissions-container {
+    background-color: #ccf5cc; /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .user-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-section {
+    margin-bottom: 20px;
+  }
+  
+  .feedback-item {
+    margin-bottom: 15px;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .action-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-button.in-progress {
+    background-color: orange;
+  }
+  
+  .action-button.resolve {
+    background-color: #4db8ff;
+  }
+  
+  .action-button.cancel {
+    background-color: #666;
+  }
+  
+  .action-button.selected {
+    border: 2px solid black; /* Highlight the selected button */
+    box-shadow: 0 0 5px black;
+  }
+  
