@@ -1,0 +1,16 @@
+<div class="containers w-75 m-auto my-4 ">
+  <div class="d-flex my-4">
+    <div *ngIf="!this.feedBackData.anonymous">
+      <h6 class="mx-2">
+        Username:
+        {{ this.feedBackData?.username }}
+      </h6>
+    </div>
+  </div>
+
+  <div *ngFor="let item of feedBackData.questionAnswerList">
+    <div><b>Question :</b> {{ item.question }}</div>
+    <div><b>Answer :</b> {{ item.answer }}</div>
+    <br />
+  </div>
+</div>

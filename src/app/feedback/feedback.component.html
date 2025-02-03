@@ -1,1 +1,27 @@
-<p>feedback works!</p>
+<div style="display: flex; flex-wrap: wrap; " *ngIf="isAdmin">
+    <div (click)="feedbackCategories()" style="width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
+
+        Feedback categories
+        
+    </div>
+    
+    <div (click)="viewFeedbacks('hi')" style="margin-left: 5px; width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
+    
+        View Feedback
+        
+    </div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; " *ngIf="!isAdmin">
+    <div (click)="postFeedback()" style="width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
+
+        Post Feedback 
+        
+    </div>
+    
+    <div (click)="alreadySubmittedFeedbacks()" style="margin-left: 5px; width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
+    
+        Already Submitted Feedback
+        
+    </div>
+</div>
