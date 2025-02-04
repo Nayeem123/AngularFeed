@@ -40,23 +40,23 @@ export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   fetchChartData(): void {
-    const apiUrl = `https://api.example.com/charts?title=${encodeURIComponent(this.data.title)}`;
-    this.http.get(apiUrl).subscribe(
-      (response: any) => {
-        if (response && response.length > 0) {
-          this.chartData = response;
+    // const apiUrl = `https://api.example.com/charts?title=${encodeURIComponent(this.data.title)}`;
+    // this.http.get(apiUrl).subscribe(
+    //   (response: any) => {
+    //     if (response && response.length > 0) {
+    //       this.chartData = response;
           this.loading = false;
           this.renderChart();
-        } else {
-          this.error = 'No data available for the selected chart.';
-          this.loading = false;
-        }
-      },
-      (error) => {
-        this.error = 'Failed to load chart data. Please try again later.';
-        this.loading = false;
-      }
-    );
+    //     } else {
+    //       this.error = 'No data available for the selected chart.';
+    //       this.loading = false;
+    //     }
+    //   },
+    //   (error) => {
+    //     this.error = 'Failed to load chart data. Please try again later.';
+    //     this.loading = false;
+    //   }
+    // );
   }
 
   renderChart(): void {
@@ -78,7 +78,7 @@ export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
           const data = this.chartData.map((item: any) => item.value);
 
           this.chartInstance = new Chart(canvas, {
-            type: 'bar', // Change to 'pie', 'line', etc., as needed
+            type: 'doughnut', // Change to 'pie', 'line', etc., as needed
             data: {
               labels: labels,
               datasets: [
