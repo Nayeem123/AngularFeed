@@ -48,6 +48,13 @@ export const homeRoutes: Routes = [
           import('../feedback-submissions/feedback-submissions.routes').then(
             (m) => m.feedbackSubmissionsRoutes
           ),
+      },
+      {
+        path:'analytics',
+        loadChildren: () =>
+          import('../analytics/analytics.routes').then(
+            (m) => m.analyticsRoutes
+          ),
       }
     ],
   },
