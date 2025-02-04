@@ -2,7 +2,7 @@
   <h4>Choose Category</h4>
   <div *ngFor="let item of categories">
     <button
-      (click)="openFeedbackForm(item?.categoryName)"
+      (click)="openFeedbackForm(item)"
       class="btn btn-secondary w-100 my-2"
     >
       {{ item?.categoryName }}

@@ -1,0 +1,47 @@
+<div>
+  <div
+    class="alert alert-success my-4 w-50 mx-auto"
+    id="success-msg"
+    role="alert"
+    *ngIf="formSubmittedSuccessfully"
+  >
+    Feedback {{feedBackCategory}} Submitted SuccessFully!
+  </div>
+
+  <div *ngIf="!formSubmittedSuccessfully">
+    <div class="my-4">
+      <h4>Form : {{ feedBackCategory }}</h4>
+    </div>
+
+    <!-- Iterate over each question in the feedback form -->
+    <div *ngFor="let form of feedbackForm; let i = index">
+      <div class="my-2">Question {{ i + 1 }}: {{ form.question }}</div>
+
+      <!-- Iterate over the options for each question -->
+      <div class="form-check" *ngFor="let item of form.options; let j = index">
+        <input
+          class="form-check-input"
+          type="radio"
+          [name]="'question_' + form.id"
+          [(ngModel)]="formData[form.question]"
+          [value]="item"
+          [id]="'question' + form.id + 'option' + j"
+          required
+        />
+        <label
+          class="form-check-label"
+          [for]="'question' + form.id + 'option' + j"
+        >
+          {{ item }}
+        </label>
+      </div>
+
+      <hr />
+    </div>
+
+    <!-- Submit button -->
+    <div class="d-flex justify-content-center my-4">
+      <button (click)="submitForm()" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</div>

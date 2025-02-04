@@ -34,21 +34,23 @@ export class FeedbackComponent implements OnInit {
   }
 
   postFeedback() {
-       const dialog = this.dialog.open(FeedbackCategoriesComponent, {
-         width: '400px',
-         height: 'auto',
-         maxWidth: '400px',
-         data: {
-           mode: 'add',
-         },
-         panelClass: 'panel-cls',
-       });
-   
-       dialog.afterClosed().subscribe(async (result: any) => {
-         if (result) {
-         }
-       });
+    const dialog = this.dialog.open(FeedbackCategoriesComponent, {
+      width: '400px',
+      height: 'auto',
+      maxWidth: '400px',
+      data: {
+        mode: 'add',
+      },
+      panelClass: 'panel-cls',
+    });
+  
+    dialog.afterClosed().subscribe(async (result: any) => {
+      if (result) {
+        // Handle the result here if needed
+      }
+    });
   }
+  
 
   alreadySubmittedFeedbacks() {
     const dialog = this.dialog.open(ShowFeedbacksComponent, {

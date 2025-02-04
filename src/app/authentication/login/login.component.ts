@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
         }
         if (response.user.roles && response.user.roles.includes('ROLE_ADMIN')) {
           this.router.navigate(['/home/manage-user']);
+        } else if(response.user.roles && response.user.roles.includes('ROLE_SUPPORT')){
+          this.router.navigate(['/home/support-dashboard']);
         } else {
           this.router.navigate(['/home/feedback']);
         }

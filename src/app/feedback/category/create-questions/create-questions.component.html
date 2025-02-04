@@ -1,0 +1,75 @@
+<section>
+    <div class="containers m-auto">
+        <div class="d-flex flex-row justify-content-center my-4">
+            <h4>Add Question Details</h4>
+        </div>
+        <div class="row">
+            <div class=" col-lg-6">
+                <label class="form-label">Category Name</label>
+                <input type="text" readonly [(ngModel)]="selectedCategory['categoryName']" class="form-control" placeholder="">
+            </div>
+            <div class=" col-lg-6">
+                <label class="form-label">Show Is Anonymous Option</label>
+                <input type="radio" [(ngModel)]="questionTest['isAnonymous']" value="true"><p>Yes</p>
+                <input type="radio" [(ngModel)]="questionTest['isAnonymous']" value="false"><p>No</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-lg-6">
+                <label class="form-label">Question</label>
+                <input type="text" [(ngModel)]="questionTest['question']" class="form-control" placeholder="">
+            </div>
+            <div class=" col-lg-6">
+                <label class="form-label">Response Type</label>
+
+                <select name="responseType" [(ngModel)]="questionTest['responseType']" class="form-control">
+                    <option value="textbox">Textbox</option>
+                    <option value="radio">Radio</option>
+                    <option value="checkbox">Checkbox</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-lg-6" *ngIf="questionTest['responseType'] != 'textbox'">
+                <label class="form-label">No. of options</label>
+                <input type="number" [(ngModel)]="questionTest['noOfOptions']" (change)="prepareOptionsForm()" class="form-control" placeholder="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class=" col-lg-6" *ngFor="let item of questionTest['optionsData']; let i = index">
+                <label class="form-label">Option Value</label>
+                <input type="text" [(ngModel)]="item['name']" class="form-control" placeholder="">
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center my-4">
+            <button (click)="addQuestion()" class="btn btn-primary">Add Question</button>
+        </div>
+    </div>
+</section>
+<section>
+    <table class="table my-4">
+        <thead>
+            <tr>
+                <th scope="col">Sr No</th>
+                <th scope="col">Question</th>
+                <th scope="col">Response Type</th>
+                <th scope="col">Is Anonymous</th>
+                <th scope="col">No. of options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of questionsList; let i = index">
+                <td scope="row">{{ i + 1 }}</td>
+                <td>{{ item['question'] }}</td>
+                <td>{{ item.responseType }}</td>
+                <td>{{ item.isAnonymous }}</td>
+                <td>{{ item.noOfOptions }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<section>
+    <button (click)="saveAllQuestions()" class="btn btn-primary">Save All Questions</button>
+</section>

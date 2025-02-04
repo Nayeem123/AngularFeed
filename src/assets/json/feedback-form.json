@@ -1,0 +1,349 @@
+[
+    {
+      "category": "Assignment",
+      "sub_category": "Evaluating Assignment Effectiveness",
+      "questions": [
+        {
+          "id": 1,
+          "question": "How relevant were the assignments to the course learning objectives?",
+          "type": "radio",
+          "options": [
+            "Very Relevant",
+            "Somewhat Relevant",
+            "Not Very Relevant",
+            "Not at All Relevant"
+          ]
+        },
+        {
+          "id": 2,
+          "question": "Were the assignment instructions clear and concise?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 3,
+          "question": "How would you rate the difficulty level of the assignments?",
+          "type": "radio",
+          "options": [
+            "Too Easy",
+            "Just Right",
+            "Too Hard"
+          ]
+        },
+        {
+          "id": 4,
+          "question": "How would you rate the quality and timeliness of feedback on assignments?",
+          "type": "radio",
+          "options": [
+            "Excellent",
+            "Good",
+            "Fair",
+            "Poor"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Were the grading criteria clear and transparent?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 6,
+          "question": "Were a variety of assignment types used to evaluate learning?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Were the assignments manageable within the allotted timeframe?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 8,
+          "question": "Were opportunities for collaboration and peer review provided?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 9,
+          "question": "Did the assignments help you develop skills applicable to real-world scenarios?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 10,
+          "question": "Was technical support adequate for assignment completion?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Course Content",
+      "sub_category": "Evaluating Course Material",
+      "questions": [
+        {
+          "id": 1,
+          "question": "How would you rate the overall quality of the course content?",
+          "type": "radio",
+          "options": [
+            "Excellent",
+            "Good",
+            "Fair",
+            "Poor"
+          ]
+        },
+        {
+          "id": 2,
+          "question": "How relevant was the course content to your interests and goals?",
+          "type": "radio",
+          "options": [
+            "Very Relevant",
+            "Somewhat Relevant",
+            "Not Very Relevant",
+            "Not at All Relevant"
+          ]
+        },
+        {
+          "id": 3,
+          "question": "Did the course content provide sufficient depth and complexity?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 4,
+          "question": "How would you rate the organization and structure of the course content?",
+          "type": "radio",
+          "options": [
+            "Excellent",
+            "Good",
+            "Fair",
+            "Poor"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Were the textbooks and course materials adequate and up-to-date?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 6,
+          "question": "Were real-world examples and case studies effectively used to illustrate key concepts?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Were the assessments (quizzes, exams, etc.) aligned with the course learning objectives?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 8,
+          "question": "Were the course materials regularly updated to reflect new developments in the field?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 9,
+          "question": "Did the course content adequately address diversity and inclusion issues?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 10,
+          "question": "Were additional resources (e.g., online tutorials, videos) provided to support learning?",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Teaching Methods",
+      "sub_category": "Evaluating Instructional Strategies",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What was your instructor's teaching style like? (Select all that apply)",
+          "type": "checkbox",
+          "options": [
+            "Lecturing",
+            "Discussion-based",
+            "Hands-on",
+            "Flipped classroom",
+            "Other"
+          ]
+        },
+        {
+          "id": 2,
+          "question": "How would you rate your level of engagement during classes?",
+          "type": "radio",
+          "options": [
+            "Highly Engaged",
+            "Somewhat Engaged",
+            "Not Very Engaged",
+            "Not at All Engaged"
+          ]
+        },
+        {
+          "id": 3,
+          "question": "How would you rate the quality and timeliness of feedback from your instructor?",
+          "type": "radio",
+          "options": [
+            "Excellent",
+            "Good",
+            "Fair",
+            "Poor"
+          ]
+        },
+        {
+          "id": 4,
+          "question": "Were your instructor's office hours adequate and accessible?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Were guest lectures effectively used to enhance learning?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 6,
+          "question": "Was group work effectively used to promote collaboration and learning?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Was technology effectively integrated into the course to support learning?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 8,
+          "question": "Was the course pace adequate for your learning needs?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 9,
+          "question": "Were a variety of assessment methods used to evaluate learning?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        },
+        {
+          "id": 10,
+          "question": "Was your instructor available and approachable outside of class?",
+          "type": "radio",
+          "options": [
+            "Yes",
+            "Mostly",
+            "Somewhat",
+            "No"
+          ]
+        }
+      ]
+    }
+  ]
+  
