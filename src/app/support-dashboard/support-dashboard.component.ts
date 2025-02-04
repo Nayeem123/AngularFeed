@@ -42,14 +42,17 @@ export class SupportDashboardComponent {
 
   ngOnInit(): void {
     // Load feedback categories from the server
-    this.loadFeedbackCategories();
+    let userName = localStorage.getItem('userName');
+    console.log(userName);
+    this.loadFeedbackCategories(userName);
   }
 
   /**
    * Load feedback categories from the server
    */
-  loadFeedbackCategories() {
-    this.http.get<any[]>('http://localhost:8080/dashboard/sabid').subscribe({
+  loadFeedbackCategories(userName: string) {
+    let url = "http://localhost:8080/dashboard/" + userName;
+    this.http.get<any[]>(url).subscribe({
       next: (categories) => {
         console.log(categories["data"]);
         this.feedbackCategories = categories["data"].map((category, index) => ({

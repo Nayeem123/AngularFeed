@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddFeedbackCategoriesComponent } from '../add-feedback-categories/add-feedback-categories.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { GlobalserviceService } from '../../service/globalservice.service';
+import { CreateQuestionsComponent } from '../category/create-questions/create-questions.component';
+
 
 @Component({
   selector: 'app-show-feedbacks',
@@ -67,5 +69,11 @@ export class ShowFeedbacksComponent implements OnInit {
       this.userfeedbackData = data.feedbackDtoList
       console.log(data.feedbackDtoList)
     });
+  }
+
+  addQuestions(idx:any) {
+    // Set category here
+    this.feedbackService.selectedCategory = this.feedBack[idx];
+    this.router.navigate(['home', 'feedback', 'category-create-questions']);
   }
 }

@@ -5,6 +5,8 @@ import { AddFeedbackCategoriesComponent } from './add-feedback-categories/add-fe
 import { ViewFeedbackFormComponent } from './view-feedback-form/view-feedback-form.component';
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { FormsComponent } from './forms/forms.component';
+import { CreateQuestionsComponent } from './category/create-questions/create-questions.component';
+
 
 
 export const feedbackRoutes: Routes = [
@@ -14,5 +16,6 @@ export const feedbackRoutes: Routes = [
   { path: 'viewFeedbackForm',  component: ViewFeedbackFormComponent},
   { path: 'feedbackForm',  component: FeedbackFormComponent},
   { path: 'forms',  component: FormsComponent},
-  
+  { path: 'category-create-questions',  component: CreateQuestionsComponent},
+
 ];
