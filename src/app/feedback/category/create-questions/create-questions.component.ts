@@ -48,7 +48,7 @@ export class CreateQuestionsComponent {
       'questions': this.questionsList
     }
     console.log(JSON.stringify(formData));
-    this.feedbackService.addFeedback(formData).subscribe(
+    this.feedbackService.addQuestionsForCategory(formData).subscribe(
       () => {
         console.log('Category Added Successfully');
       },
