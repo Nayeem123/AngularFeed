@@ -1,27 +1,27 @@
-<div style="display: flex; flex-wrap: wrap; " *ngIf="isAdmin">
-    <div (click)="feedbackCategories()" style="width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
-
-        Feedback categories
-        
+<div class="dashboard-container" *ngIf="isAdmin">
+    <h2>Admin Dashboard</h2>
+    <div class="card-grid">
+      <div class="grid-card" (click)="feedbackCategories()" [ngStyle]="{ 'background-color': getRandomColor() }">
+        <h3>Feedback Categories</h3>
+        <p>Manage different feedback categories</p>
+      </div>
+      <div class="grid-card" (click)="viewFeedbacks('hi')" [ngStyle]="{ 'background-color': getRandomColor() }">
+        <h3>View Feedback</h3>
+        <p>Check all submitted feedback</p>
+      </div>
     </div>
-    
-    <div (click)="viewFeedbacks('hi')" style="margin-left: 5px; width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
-    
-        View Feedback
-        
+  </div>
+  
+  <div class="dashboard-container" *ngIf="!isAdmin">
+    <h2>User Dashboard</h2>
+    <div class="card-grid">
+      <div class="grid-card" (click)="postFeedback()" [ngStyle]="{ 'background-color': getRandomColor() }">
+        <h3>Post Feedback</h3>
+        <p>Submit your feedback</p>
+      </div>
+      <div class="grid-card" (click)="alreadySubmittedFeedbacks()" [ngStyle]="{ 'background-color': getRandomColor() }">
+        <h3>Already Submitted Feedback</h3>
+        <p>View your past submissions</p>
+      </div>
     </div>
-</div>
-
-<div style="display: flex; flex-wrap: wrap; " *ngIf="!isAdmin">
-    <div (click)="postFeedback()" style="width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
-
-        Post Feedback 
-        
-    </div>
-    
-    <div (click)="alreadySubmittedFeedbacks()" style="margin-left: 5px; width: 100px; display: flex;justify-content: center; border: 1px solid black;height: 100px; margin-top: 20px; flex-wrap: wrap; padding: 5px;">
-    
-        Already Submitted Feedback
-        
-    </div>
-</div>
+  </div>

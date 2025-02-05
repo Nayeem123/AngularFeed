@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../feedback.service';
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFeedbackCategoriesComponent } from './add-feedback-categories/add-feedback-categories.component';
 import { FeedbackCategoriesComponent } from './feedback-categories/feedback-categories.component';
@@ -9,7 +9,7 @@ import { ShowFeedbacksComponent } from './show-feedbacks/show-feedbacks.componen
 
 @Component({
   selector: 'app-feedback',
-  imports: [NgIf],
+  imports: [NgIf, CommonModule],
   templateUrl: './feedback.component.html',
   styleUrl: './feedback.component.css',
 })
@@ -67,5 +67,18 @@ export class FeedbackComponent implements OnInit {
       if (result) {
       }
     });
+  }
+
+  /**
+   * Generates a random HEX color
+   * @returns {string} A random HEX color string
+   */
+  getRandomColor(): string {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 }

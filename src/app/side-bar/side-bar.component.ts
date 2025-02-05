@@ -37,7 +37,7 @@ export class SideBarComponent implements OnInit{
     ] : [
       {
         title: 'Feedback',
-        path:'/home/feedback'
+        path:'/home/support-dashboard'
       },
       {
         title: 'Profile',
