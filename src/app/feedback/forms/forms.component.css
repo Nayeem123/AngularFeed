@@ -1,0 +1,35 @@
+/* General button styling */
+.priority-btn {
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Default colors */
+  .priority-btn.urgent {
+    background-color: #e53e3e; /* Red */
+  }
+  
+  .priority-btn.medium {
+    background-color: #d69e2e; /* Yellow */
+  }
+  
+  .priority-btn.low {
+    background-color: #3182ce; /* Blue */
+  }
+  
+  /* Hover effect */
+  .priority-btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* Selected (active) state */
+  .priority-btn.active {
+    border: 2px solid black; /* Highlight the selected option */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  

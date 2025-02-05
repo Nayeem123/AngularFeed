@@ -1,9 +1,9 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { FeedbackService } from '../../feedback.service';
+import { NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -13,10 +13,11 @@ import { FeedbackService } from '../../feedback.service';
 })
 export class FormsComponent implements OnInit {
   category: any;
-  feedbackForm: any;
+  feedbackForm: any = [];
   feedBackCategory: any;
   formData: any = {};
   formSubmittedSuccessfully: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -24,41 +25,55 @@ export class FormsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Retrieve query parameter 'category' from the URL
     this.route.queryParams.subscribe((params) => {
-      console.log(params['category']);
-
-      this.category = params['category']; // Assign category data
+      this.category = params['category'];
     });
 
-    const JSONData = this.http
-      .get('assets/json/feedback-form.json')
-      .subscribe((data: any) => {
-        const dataForm = data;
-        const feedbackForms = dataForm.filter((feedback: any) => {
-          console.log(feedback.category);
-
-          return feedback.category == this.category;
-        });
-        this.feedBackCategory = feedbackForms[0].category;
-        this.feedbackForm = feedbackForms[0].questions;
-        console.log(feedbackForms);
-      });
+    this.http.get('assets/json/feedback-form.json').subscribe((data: any) => {
+      const feedbackData = data.data;
+      if (feedbackData && feedbackData.questionResponses) {
+        this.feedBackCategory = feedbackData.category;
+        this.feedbackForm = feedbackData.questionResponses;
+      }
+    });
   }
 
+  // Handle checkbox selection
+  updateCheckboxSelection(question: string, option: string, event: any): void {
+    if (!this.formData[question]) {
+      this.formData[question] = [];
+    }
+
+    if (event.target.checked) {
+      // Add option to the array if checked
+      this.formData[question].push(option);
+    } else {
+      // Remove option from the array if unchecked
+      this.formData[question] = this.formData[question].filter(
+        (item: string) => item !== option
+      );
+    }
+  }
+
+  // Submit Form
   submitForm() {
-    const allAnswered = this.feedbackForm.every(
-      (form: { question: string | number }) =>
+    const allAnswered = this.feedbackForm.every((form: any) => {
+      if (form.responseType === 'checkbox') {
+        return (
+          this.formData[form.question] &&
+          this.formData[form.question].length > 0
+        );
+      }
+      return (
         this.formData[form.question] !== undefined &&
         this.formData[form.question] !== null
-    );
+      );
+    });
 
     if (!allAnswered) {
       alert('Please answer all questions before submitting!');
-      return; 
+      return;
     }
-
-    console.log(this.formData);
 
     const userName = localStorage.getItem('userName');
 
@@ -67,8 +82,8 @@ export class FormsComponent implements OnInit {
       categoryName: this.feedBackCategory,
       status: 'OPEN',
       questionAnswermap: this.formData,
-      anonymous: false,
-      priority: 'URGENT',
+      anonymous: this.formData.anonymous || false,
+      priority: this.formData.priority || 'Low', // Default priority
     };
 
     this.feedbackService.submitFeedbacks(requestBody).subscribe(
@@ -81,11 +96,15 @@ export class FormsComponent implements OnInit {
             block: 'start',
           });
         }
-        console.log('Response:', res);
       },
       (error) => {
         console.error('Error:', error);
       }
     );
+  }
+
+  // Reset Form
+  resetForm() {
+    this.formData = {};
   }
 }
