@@ -15,6 +15,6 @@ export class AnalyticsComponent {
     this.dialog.open(ChartDialogComponent, {
       data: { title },
       width: '80%',
-    });
+    }); 
   }
 }

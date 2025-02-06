@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FeedbackService } from '../../feedback.service';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-forms',
@@ -21,7 +22,8 @@ export class FormsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private feedbackService: FeedbackService
+    private feedbackService: FeedbackService,
+    //private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -29,11 +31,20 @@ export class FormsComponent implements OnInit {
       this.category = params['category'];
     });
 
-    this.http.get('assets/json/feedback-form.json').subscribe((data: any) => {
-      const feedbackData = data.data;
+    this.getQuestionsForCategory();
+  }
+
+  getQuestionsForCategory() {
+    const userName = localStorage.getItem('userName');
+    let category = this.category;
+    this.feedbackService.getQuestionsForCategories(userName, category).subscribe((resp) => {
+      const feedbackData = resp.data;
       if (feedbackData && feedbackData.questionResponses) {
         this.feedBackCategory = feedbackData.category;
         this.feedbackForm = feedbackData.questionResponses;
+      }
+      else {
+        window.alert("No data found for this category");
       }
     });
   }
@@ -106,5 +117,9 @@ export class FormsComponent implements OnInit {
   // Reset Form
   resetForm() {
     this.formData = {};
+  }
+
+  cancelForm() {
+    // this.router.navigate(['home', 'feedback']);
   }
 }

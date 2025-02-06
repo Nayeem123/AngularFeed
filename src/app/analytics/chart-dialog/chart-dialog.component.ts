@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js'; // ✅ Import registerables
 import { CommonModule } from '@angular/common';
+import { FeedbackService } from '../../feedback.service';
 
 @Component({
   selector: 'app-chart-dialog',
@@ -14,17 +15,20 @@ import { CommonModule } from '@angular/common';
 export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
   loading: boolean = true;
   error: string | null = null;
-  chartData: any[] = [
-    { "month": "January", "value": 65 },
-    { "month": "February", "value": 59 },
-    { "month": "March", "value": 80 },
-    { "month": "April", "value": 81 }
-  ];
+  // chartData: any[] = [
+  //   { "month": "January", "value": 65 },
+  //   { "month": "February", "value": 59 },
+  //   { "month": "March", "value": 80 },
+  //   { "month": "April", "value": 81 }
+  // ];
+  chartData: any[] = [];
   chartInstance: Chart | null = null;
+  chartLabel: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { title: string },
-    private http: HttpClient
+    private http: HttpClient,
+    private feedbackService: FeedbackService
   ) {
     Chart.register(...registerables); // ✅ Register all required components
   }
@@ -35,7 +39,7 @@ export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (!this.loading && !this.error && this.chartData.length > 0) {
-      this.renderChart();
+      this.renderChart(this.chartLabel);
     }
   }
 
@@ -45,8 +49,7 @@ export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
     //   (response: any) => {
     //     if (response && response.length > 0) {
     //       this.chartData = response;
-          this.loading = false;
-          this.renderChart();
+
     //     } else {
     //       this.error = 'No data available for the selected chart.';
     //       this.loading = false;
@@ -57,9 +60,135 @@ export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
     //     this.loading = false;
     //   }
     // );
+
+    this.loading = false;
+    this.feedbackService.getAnalyticsForCategories().subscribe((resp) => {
+      this.loading = false;
+      if (resp) {
+        if(this.data.title == 'Feedback Submission Status') {
+          this.prepareStatusCountData(resp);
+        }
+        else if(this.data.title == 'Feedback Urgency Trend') {
+          this.prepareUrgencyTrendData(resp);
+        }
+        else if(this.data.title == 'Category-wise Feedback Count') {
+          this.prepareSubmissionCountData(resp);
+        }
+        else if (this.data.title == 'Student Participation'){
+          this.prepareStudentParticipationData(resp);
+        }
+      }
+      else {
+        this.error = 'No data available for the selected chart.';
+      }
+    });
   }
 
-  renderChart(): void {
+  private prepareSubmissionCountData(resp) {
+    let dataMap = {};
+    let labels = resp.feedbackDtoList.map((item: any) => item.categoryName);
+    for (let index = 0; index < labels.length; index++) {
+      const element = labels[index];
+      dataMap[element] = 0;
+    }
+
+    for (let index = 0; index < resp.feedbackDtoList.length; index++) {
+      const element = resp.feedbackDtoList[index];
+      let count = dataMap[element.categoryName];
+      if (count < 1) {
+        count = 0;
+      }
+      count = count + 1;
+      dataMap[element.categoryName] = count;
+    }
+
+    this.chartData = Object.entries(dataMap).map(([key, value]) => ({
+      name: key,
+      value: value
+    }));
+
+    this.renderChart(this.chartLabel);
+  }
+
+  private prepareUrgencyTrendData(resp) {
+    let dataMap = {};
+    let labels = resp.feedbackDtoList.map((item: any) => item.priority);
+    for (let index = 0; index < labels.length; index++) {
+      const element = labels[index];
+      dataMap[element] = 0;
+    }
+
+    for (let index = 0; index < resp.feedbackDtoList.length; index++) {
+      const element = resp.feedbackDtoList[index];
+      let count = dataMap[element.priority];
+      if (count < 1) {
+        count = 0;
+      }
+      count = count + 1;
+      dataMap[element.priority] = count;
+    }
+
+    this.chartData = Object.entries(dataMap).map(([key, value]) => ({
+      name: key,
+      value: value
+    }));
+
+    this.renderChart(this.chartLabel);
+  }
+
+  private prepareStatusCountData(resp) {
+    let dataMap = {};
+    let labels = resp.feedbackDtoList.map((item: any) => item.status);
+    for (let index = 0; index < labels.length; index++) {
+      const element = labels[index];
+      dataMap[element] = 0;
+    }
+
+    for (let index = 0; index < resp.feedbackDtoList.length; index++) {
+      const element = resp.feedbackDtoList[index];
+      let count = dataMap[element.status];
+      if (count < 1) {
+        count = 0;
+      }
+      count = count + 1;
+      dataMap[element.status] = count;
+    }
+
+    this.chartData = Object.entries(dataMap).map(([key, value]) => ({
+      name: key,
+      value: value
+    }));
+
+    this.renderChart(this.chartLabel);
+  }
+
+  private prepareStudentParticipationData(resp) {
+    let dataMap = {};
+    let labels = resp.feedbackDtoList.map((item: any) => item.username);
+    for (let index = 0; index < labels.length; index++) {
+      const element = labels[index];
+      dataMap[element] = 0;
+    }
+
+    for (let index = 0; index < resp.feedbackDtoList.length; index++) {
+      const element = resp.feedbackDtoList[index];
+      let count = dataMap[element.username];
+      if (count < 1) {
+        count = 0;
+      }
+      count = count + 1;
+      dataMap[element.username] = count;
+    }
+
+    this.chartData = Object.entries(dataMap).map(([key, value]) => ({
+      name: key,
+      value: value
+    }));
+
+    this.renderChart(this.chartLabel);
+  }
+
+  renderChart(labelTxt: string): void {
     setTimeout(() => {
       const container = document.getElementById('chart-container-wrapper');
 
@@ -74,7 +203,7 @@ export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
             this.chartInstance.destroy();
           }
 
-          const labels = this.chartData.map((item: any) => item.month);
+          const labels = this.chartData.map((item: any) => item.name);
           const data = this.chartData.map((item: any) => item.value);
 
           this.chartInstance = new Chart(canvas, {
@@ -83,7 +212,7 @@ export class ChartDialogComponent implements OnInit, AfterViewInit, OnDestroy {
               labels: labels,
               datasets: [
                 {
-                  label: 'Monthly Data',
+                  label: labelTxt,
                   data: data,
                   backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
                 },

@@ -79,4 +79,12 @@ export class FeedbackService {
   addQuestionsForCategory(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/feedback/category/questions`, data);
   }
+
+  getQuestionsForCategories(userName?:any, category?: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/feedback/category/fetch-questions-form?username=${userName}&categoryName=${category}`);
+  }
+
+  getAnalyticsForCategories(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/feedback/show-all-feedback`);
+  }
 }

@@ -6,12 +6,20 @@
         <div class="row">
             <div class=" col-lg-6">
                 <label class="form-label">Category Name</label>
-                <input type="text" readonly [(ngModel)]="selectedCategory['categoryName']" class="form-control" placeholder="">
+                <input type="text" readonly [(ngModel)]="selectedCategory['categoryName']" class="form-control"
+                    placeholder="">
             </div>
             <div class=" col-lg-6">
                 <label class="form-label">Show Is Anonymous Option</label>
-                <input type="radio" [(ngModel)]="questionTest['isAnonymous']" value="true"><p>Yes</p>
-                <input type="radio" [(ngModel)]="questionTest['isAnonymous']" value="false"><p>No</p>
+                <div class="row">
+                    <div class="col-lg-6"><input type="radio" [(ngModel)]="questionTest['isAnonymous']" value="true">
+                        Yes
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="radio" [(ngModel)]="questionTest['isAnonymous']" value="false">
+                        No
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -32,7 +40,8 @@
         <div class="row">
             <div class=" col-lg-6" *ngIf="questionTest['responseType'] != 'textbox'">
                 <label class="form-label">No. of options</label>
-                <input type="number" [(ngModel)]="questionTest['noOfOptions']" (change)="prepareOptionsForm()" class="form-control" placeholder="">
+                <input type="number" [(ngModel)]="questionTest['noOfOptions']" (change)="prepareOptionsForm()"
+                    class="form-control" placeholder="">
             </div>
         </div>
 
@@ -42,7 +51,7 @@
                 <input type="text" [(ngModel)]="item['name']" class="form-control" placeholder="">
             </div>
         </div>
-        
+
         <div class="d-flex justify-content-center my-4">
             <button (click)="addQuestion()" class="btn btn-primary">Add Question</button>
         </div>

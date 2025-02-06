@@ -17,11 +17,13 @@ export class SideBarComponent implements OnInit{
   userTabs:any = [];
 
   ngOnInit(): void {
-    let isAdmin;
+    let isAdmin, userRole;
     if (isPlatformBrowser(this.platformId)) {
      isAdmin = JSON.parse(localStorage['isAdmin']) || false;
+     userRole = localStorage['role'];
     }
-    this.userTabs = (isAdmin) ? [
+    
+    let adminRoutes = [
       {
         title: 'User Management',
         path:'/home/manage-user'
@@ -33,8 +35,14 @@ export class SideBarComponent implements OnInit{
       {
         title: 'Profile',
         path:'/home/profile'
+      },
+      {
+        title: 'Analytics',
+        path:'home/analytics'
       }
-    ] : [
+    ];
+
+    let supportRoutes = [
       {
         title: 'Feedback',
         path:'/home/support-dashboard'
@@ -43,7 +51,28 @@ export class SideBarComponent implements OnInit{
         title: 'Profile',
         path:'/home/profile'
       }
-    ]
+    ];
+
+    let userRoutes = [
+      {
+        title: 'Feedback',
+        path:'/home/feedback'
+      },
+      {
+        title: 'Profile',
+        path:'/home/profile'
+      }
+    ];
+
+    if(userRole == 'ROLE_ADMIN') {
+      this.userTabs = adminRoutes;
+    }
+    else if(userRole == 'ROLE_SUPPORT') {
+      this.userTabs = supportRoutes;
+    }
+    else {
+      this.userTabs = userRoutes;
+    }
   }
 
   navigateToTab(tab:any) {

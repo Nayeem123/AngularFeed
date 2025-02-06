@@ -13,7 +13,7 @@
   <div *ngIf="!formSubmittedSuccessfully">
     <!-- Title -->
     <div class="text-center my-4">
-      <h2>Teaching Methods Feedback</h2>
+      <h2>{{category}}</h2>
     </div>
 
     <!-- Iterate through questions -->
@@ -124,7 +124,8 @@
 
     <!-- Form Buttons -->
     <div class="d-flex justify-content-center gap-3 my-4">
-      <button class="btn btn-secondary" (click)="resetForm()">Cancel</button>
+      <button class="btn btn-secondary" (click)="resetForm()">Reset Form</button>
+      <button class="btn btn-secondary" (click)="cancelForm()">Cancel</button>
       <button class="btn btn-primary" (click)="submitForm()">Submit</button>
     </div>
   </div>
