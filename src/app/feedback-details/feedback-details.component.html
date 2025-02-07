@@ -41,6 +41,8 @@
               {{ feedback.status }}
             </span>
             <ng-template #normalStatus>{{ feedback.status }}</ng-template>
+            <button *ngIf="feedback.status.toUpperCase() != 'OPEN'" type="button" class="bi bi-file-earmark-arrow-down-fill" (click)="downloadForm(i)">
+            </button>
           </td>
         </tr>
       </tbody>

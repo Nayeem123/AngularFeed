@@ -87,4 +87,9 @@ export class FeedbackService {
   getAnalyticsForCategories(): Observable<any> {
     return this.http.get(`${this.baseUrl}/feedback/show-all-feedback`);
   }
+
+  downloadPDF(feedbackId?:any): Observable<any> {
+    let url = `${this.baseUrl}/feedback/download/` + feedbackId;
+    return this.http.get(url, { responseType: 'blob' });
+  }
 }

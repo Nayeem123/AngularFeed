@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FeedbackService } from '../feedback.service';
 
 interface FeedbackDetail {
   id: number;
@@ -39,7 +40,8 @@ export class FeedbackDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private feedbackService: FeedbackService
   ) {}
 
   ngOnInit(): void {
@@ -89,4 +91,19 @@ export class FeedbackDetailsComponent implements OnInit {
     this.router.navigate(['/home/feedback-submissions/' + feedback.id]);
   }
   
+  downloadForm(idx: number) {
+
+    let feedbackId = this.feedbackDetails[idx].id;
+    console.log(feedbackId);
+    this.feedbackService.downloadPDF(feedbackId).subscribe((resp: any) => {
+      const blob = new Blob([resp], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'feedback.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
 }
