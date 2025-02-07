@@ -42,6 +42,8 @@ export class FormsComponent implements OnInit {
       if (feedbackData && feedbackData.questionResponses) {
         this.feedBackCategory = feedbackData.category;
         this.feedbackForm = feedbackData.questionResponses;
+        this.formData['anonymous'] = this.feedbackForm[0].anonymous;
+        
       }
       else {
         window.alert("No data found for this category");
